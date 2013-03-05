@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Santa Tecla Cultural</title>
+    <meta charset='utf-8'> 
+    <link href = "/css/jquery.mobile-1.2.0.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href = "/css/jquery.mobile.theme-1.2.0.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href = "/css/tecla_cultura.css" media="all" rel="stylesheet" type="text/css" />
+    <link href = "/css/photoswipe/photoswipe.css" media="all" rel="stylesheet" type="text/css" />
+    <meta name="viewport"  content="width=device-width,initial-scale=1.0,maximum-scale=1.0" >
+  <body id = "mobile_body">
+    <div id = "main-page" data-role = "page" data-theme="a" >
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="/", data-role= "none"/>
+            <div id = "image">
+              <img src = "/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="/", data-icon= "home" id = "menu-rigth"/>
+      </div>
+    <!-- BEGINING OF CONTENT -->
+    
+    <!-- END OF CONTENT -->
+    <!-- Start of map page -->
+    <div id = "map-page" data-role = "page" data-theme="a">
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="/", data-role= "none"/>
+            <div id = "image">
+              <img src = "/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="/", data-icon= "home" id = "menu-rigth"/>
+      </div>
+      <div id = "map" data-role = "content"></div>
+    </div>
+    <!-- End of map page -->
+
+     <a id='openDialog' href="#dialog" data-rel="dialog" data-transition="pop" style='display:none;'></a>
+    
+    <!-- Start of dialog page -->
+    <div data-role="page" id="dialog" data-theme="b">
+      <div data-role="header">
+        
+        <h1>Inicia Sesión</h1>
+      </div>    
+      <div data-role="content" id="dialog-text">
+      </div>    
+    </div>
+    <!-- End of map page -->
+    <script src = "/js/cordova-2.2.0.js"></script>
+    <script src = "/js/jquery-1.8.3.min.js"></script>
+    <script src = "/js/jquery.mobile-1.2.0.min.js"></script>
+    <script src = "/js/jquery.mobile.subpage.js"></script>
+    <script src = "/js/photoswipe/klass.min.js"></script>
+    <script src = "js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
+    <script src = "/js/tecla_cultura.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src = "/js/gmaps.js"></script>
+  </body>
+</html>
