@@ -8,72 +8,81 @@
     <link href = "css/tecla_cultura.css" media="all" rel="stylesheet" type="text/css" />
     <link href = "css/photoswipe/photoswipe.css" media="all" rel="stylesheet" type="text/css" />
     <meta name="viewport"  content="width=device-width,initial-scale=1.0,maximum-scale=1.0" >
+    <script src = "js/cordova-2.2.0.js"></script>
+    <script src = "js/jquery-1.8.3.min.js"></script>
+    <script src = "js/jquery.mobile-1.2.0.min.js"></script>
+    <script src = "js/jquery.mobile.subpage.js"></script>
+    <script src = "js/photoswipe/klass.min.js"></script>
+    <script src = "js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
+    <script type="text/javascript" src="js/gmaps-api.min.js"></script>
+    <script src = "js/gmaps.js"></script>
+    <script src = "js/tecla_cultura.js"></script>
   <body id = "mobile_body">
     <div id = "main-page" data-role = "page" data-theme="a" >
+
       <div data-role="header" data-theme="a" data-position="fixed">
         <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
         <div id="logo">
-          <a href="/", data-role= "none"/>
+          <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="/", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
       </div>
+
       <div data-role= "content">
         <div class="ui-grid-a">
           
           <div class="ui-block-a">
-            <a href = "events.html", class="menu-link" >
+            <a href = "#event-index" data-backend="/mobile_app/events" class="menu-link" >
               <center>
-                <img src="css/images/icons/calendar.png" class="menu-icon" >
                 <h3>Agenda Cultural</h3>
+                <img src="css/images/icons/calendar.png" class="menu-icon" >
               </center>
             </a>
           </div>
 
           <div class="ui-block-b">
-            <a href = "place_types.html" class="menu-link" >
+            <a href = "#place-index" data-backend="/mobile_app/place_types" class="menu-link" >
               <center>
-                <img src = "css/images/icons/places.png" class="menu-icon" />
                 <h3>Escondites</h3>
+                <img src = "css/images/icons/places.png" class="menu-icon" />
               </center>
             </a>
           </div>
           
           <div class="ui-block-a">
-              <a href="#map-page" class = "menu-link">
+            <a href = "#info-page-index" data-backend="/mobile_app/info_pages" class = "menu-link" >
               <center>
-                <img src = "css/images/icons/map.png" class="menu-icon" />
-                <h3>Mapa</h3>
+                <h3>Información</h3>
+                <img src = "css/images/icons/info_pages.png" class = "menu-icon" />
               </center>
             </a>
           </div>
           
           <div class="ui-block-b">
-            <a href = "galleries.html" class = "menu-link" >
+            <a href = "#gallery-index" data-backend="/mobile_app/galleries" class = "menu-link" >
               <center>
-                <img src = "css/images/icons/gallery.png" class = "menu-icon" />
                 <h3>Galeria</h3>
+                <img src = "css/images/icons/gallery.png" class = "menu-icon" />
               </center>
             </a>
           </div>  
           
+          
+        </div>
+        <div class="ui-grid-solo">
           <div class="ui-block-a">
-            <a href = "info_pages.html" class = "menu-link" >
+              <a href="#map-page" class = "menu-link">
               <center>
-              <img src = "css/images/icons/info_pages.png" class = "menu-icon" />
-                <h3>Información</h3>
+                <h3>Mapa</h3>
+                <img src = "css/images/icons/map.png" class="menu-icon" />
               </center>
             </a>
           </div>
-
-          <div class="ui-block-b">
-            
-          </div>   
-        
-      </div>
+        </div>
       </div>
     </div>
     <!-- Start of map page -->
@@ -81,20 +90,264 @@
       <div data-role="header" data-theme="a" data-position="fixed">
         <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
         <div id="logo">
-          <a href="/", data-role= "none"/>
+          <a href="#main-page", data-role= "none"/>
             <div id = "image">
-              <img src = "/images/logo.png", class = "app-logo">
+              <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="/", data-icon= "home" id = "menu-rigth"/>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
       </div>
+      
       <div id = "map" data-role = "content"></div>
     </div>
     <!-- End of map page -->
 
-     <a id='openDialog' href="#dialog" data-rel="dialog" data-transition="pop" style='display:none;'></a>
-    
+    <!-- Start of Events Index page -->
+    <div data-role="page" id="event-index" data-theme="a">
+      <!-- Start of page header -->
+      <<div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Events Index page -->
+
+
+    <!-- Start of Events Show page -->
+    <div data-role="page" id="events-show" data-theme="a">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+
+    </div>
+    <!-- End of Events Show page -->
+
+
+    <!-- Start of Events for Date page -->
+    <div data-role="page" id="events-date" data-theme="a">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Events for Date page -->
+
+
+    <!-- Start of Gallery Index for Date page -->
+    <div data-role="page" id="gallery-index" data-theme="a">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Gallery Index page -->
+
+    <!-- Start of Gallery Show for Date page -->
+    <div data-role="page" id="gallery-show" data-theme="a" class="gallery-page">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Gallery Show page -->
+
+    <!-- Start of Info Index for Date page -->
+    <div data-role="page" id="info-page-index" data-theme="a">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Info Index page -->
+
+    <!-- Start of Info Show for Date page -->
+    <div data-role="page" id="info-page-show" data-theme="a">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Info Show page -->
+
+     <!-- Start of Place Types Index for Date page -->
+    <div data-role="page" id="place-type-index" data-theme="a">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Place Types Index page -->
+
+
+    <!-- Start of Place Index for Date page -->
+    <div data-role="page" id="place-index" data-theme="a">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Info Index page -->
+
+    <!-- Start of Place Show for Date page -->
+    <div data-role="page" id="place-show" data-theme="a">
+      <!-- Start of page header -->
+      <div data-role="header" data-theme="a" data-position="fixed">
+        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
+        <div id="logo">
+          <a href="#main-page", data-role= "none"/>
+            <div id = "image">
+              <img src = "css/images/logo.png", class = "app-logo">
+            </div>
+          </a>
+        </div>
+        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+      </div>
+      <!-- Start of page header -->
+
+      <!--Start of page body-->
+      <div class="page-body">
+      </div>
+      <!--End of page body-->
+
+    </div>
+    <!-- End of Place Show page -->
+
     <!-- Start of dialog page -->
     <div data-role="page" id="dialog" data-theme="b">
       <div data-role="header">
@@ -105,14 +358,6 @@
       </div>    
     </div>
     <!-- End of map page -->
-    <script src = "js/cordova-2.2.0.js"></script>
-    <script src = "js/jquery-1.8.3.min.js"></script>
-    <script src = "js/jquery.mobile-1.2.0.min.js"></script>
-    <script src = "js/jquery.mobile.subpage.js"></script>
-    <script src = "js/photoswipe/klass.min.js"></script>
-    <script src = "js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
-    <script src = "js/tecla_cultura.js"></script>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script src = "js/gmaps.js"></script>
+    
   </body>
 </html>

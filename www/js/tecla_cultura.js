@@ -1,5 +1,6 @@
 var map;
 var markers;
+var DOMAIN = "http://192.168.1.4:3000"
 var map_initialized = false;
 function center_map(map){
 	var bounds = new google.maps.LatLngBounds();
@@ -26,6 +27,7 @@ function initialize_map(data){
 	map.resize
 }
 
+
 function bind_handlers(){
 	$(".attend-btn").live("click",function(){
 		console.log("Attending event....")
@@ -48,6 +50,32 @@ function bind_handlers(){
 		});
 		return false
 	})
+
+	$(".backend-link").live("click",function(e){
+		var page = $(this).attr("href")
+		var data_request_url = $(this).data("backend")
+		$(page+" .page-body").html("")
+		$.get(data_request_url,function(data){
+			try{
+				$(page + " .page-body").html(data)
+				$(page).page()
+			}
+			catch(err){
+				console.log(err)
+			}
+		})
+	})
+
+	$(".menu-link").live("click",function(e){
+		console.log("menu link click")
+		var page = $(this).attr("href")
+		var data_request_url = DOMAIN + $(this).data("backend")
+		$(page+" .page-body").html("")
+		$(page + " .page-body").load(data_request_url)
+		$(page).page()
+	})
+
+
 
 	$("#prev-month").live("click",function(){
 		month= $(this).data("month")
