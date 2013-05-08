@@ -153,7 +153,9 @@ function bind_handlers(){
 	});
 
 	$("#map-page").live("pageshow", function(){
-		$.getJSON("/mobile_app/map.json", function(data){
+			console.log("executing handler...")
+			route = DOMAIN + "/mobile_app/map.json"
+		$.getJSON(route, function(data){
 			console.log("executing callback...")
 			if(!map_initialized){
 				initialize_map(data)
