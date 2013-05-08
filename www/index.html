@@ -16,57 +16,65 @@
     <script src = "js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
     <script type="text/javascript" src="js/gmaps-api.min.js"></script>
     <script src = "js/gmaps.js"></script>
+    <script>
+      $(document).bind( "mobileinit", function(){
+          //alert("mobileinit fired");  
+          $.support.cors = true;
+          $.mobile.allowCrossDomainPages = true;   
+             
+      });        
+    </script> 
     <script src = "js/tecla_cultura.js"></script>
   <body id = "mobile_body">
     <div id = "main-page" data-role = "page" data-theme="a" >
 
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
 
       <div data-role= "content">
         <div class="ui-grid-a">
           
-          <div class="ui-block-a">
+          <div class="ui-block-a menu-icon-cell">
             <a href = "#event-index" data-backend="/mobile_app/events" class="menu-link" >
               <center>
                 <h3>Agenda Cultural</h3>
-                <img src="css/images/icons/calendar.png" class="menu-icon" >
+                <img id = "menu-opt-1" src="css/images/icons/calendar.png" class="menu-icon" >
               </center>
             </a>
           </div>
 
-          <div class="ui-block-b">
-            <a href = "#place-index" data-backend="/mobile_app/place_types" class="menu-link" >
+          <div class="ui-block-b menu-icon-cell">
+            <a href = "#place-type-index" data-backend="/mobile_app/place_types" class="menu-link" >
               <center>
                 <h3>Escondites</h3>
-                <img src = "css/images/icons/places.png" class="menu-icon" />
+                <img id = "menu-opt-2" src = "css/images/icons/places.png" class="menu-icon" />
               </center>
             </a>
           </div>
           
-          <div class="ui-block-a">
+          <div class="ui-block-a menu-icon-cell">
             <a href = "#info-page-index" data-backend="/mobile_app/info_pages" class = "menu-link" >
               <center>
                 <h3>Información</h3>
-                <img src = "css/images/icons/info_pages.png" class = "menu-icon" />
+                <img id = "menu-opt-3" src = "css/images/icons/info_pages.png" class = "menu-icon" />
               </center>
             </a>
           </div>
           
-          <div class="ui-block-b">
+          <div class="ui-block-b menu-icon-cell">
             <a href = "#gallery-index" data-backend="/mobile_app/galleries" class = "menu-link" >
               <center>
                 <h3>Galeria</h3>
-                <img src = "css/images/icons/gallery.png" class = "menu-icon" />
+                <img id = "menu-opt-4" src = "css/images/icons/gallery.png" class = "menu-icon" />
               </center>
             </a>
           </div>  
@@ -74,11 +82,11 @@
           
         </div>
         <div class="ui-grid-solo">
-          <div class="ui-block-a">
+          <div class="ui-block-a menu-icon-cell">
               <a href="#map-page" class = "menu-link">
               <center>
                 <h3>Mapa</h3>
-                <img src = "css/images/icons/map.png" class="menu-icon" />
+                <img id = "map-icon"  src = "css/images/icons/map.png" class="menu-icon" />
               </center>
             </a>
           </div>
@@ -86,17 +94,17 @@
       </div>
     </div>
     <!-- Start of map page -->
-    <div id = "map-page" data-role = "page" data-theme="a">
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+    <div id = "map-page" data-role = "page" data-theme="a" id ="app_header">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       
       <div id = "map" data-role = "content"></div>
@@ -106,23 +114,20 @@
     <!-- Start of Events Index page -->
     <div data-role="page" id="event-index" data-theme="a">
       <!-- Start of page header -->
-      <<div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
+     
 
     </div>
     <!-- End of Events Index page -->
@@ -131,16 +136,16 @@
     <!-- Start of Events Show page -->
     <div data-role="page" id="events-show" data-theme="a">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
@@ -157,23 +162,20 @@
     <!-- Start of Events for Date page -->
     <div data-role="page" id="events-date" data-theme="a">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
+      
 
     </div>
     <!-- End of Events for Date page -->
@@ -182,71 +184,60 @@
     <!-- Start of Gallery Index for Date page -->
     <div data-role="page" id="gallery-index" data-theme="a">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
-
+      
     </div>
     <!-- End of Gallery Index page -->
 
     <!-- Start of Gallery Show for Date page -->
     <div data-role="page" id="gallery-show" data-theme="a" class="gallery-page">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
-
+      
     </div>
     <!-- End of Gallery Show page -->
 
     <!-- Start of Info Index for Date page -->
     <div data-role="page" id="info-page-index" data-theme="a">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
+      
 
     </div>
     <!-- End of Info Index page -->
@@ -254,23 +245,19 @@
     <!-- Start of Info Show for Date page -->
     <div data-role="page" id="info-page-show" data-theme="a">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
 
     </div>
     <!-- End of Info Show page -->
@@ -278,23 +265,20 @@
      <!-- Start of Place Types Index for Date page -->
     <div data-role="page" id="place-type-index" data-theme="a">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
+     
 
     </div>
     <!-- End of Place Types Index page -->
@@ -303,23 +287,20 @@
     <!-- Start of Place Index for Date page -->
     <div data-role="page" id="place-index" data-theme="a">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
+      
 
     </div>
     <!-- End of Info Index page -->
@@ -327,24 +308,20 @@
     <!-- Start of Place Show for Date page -->
     <div data-role="page" id="place-show" data-theme="a">
       <!-- Start of page header -->
-      <div data-role="header" data-theme="a" data-position="fixed">
-        <a href = "" data-icon="arrow-l" data-rel="back">Atras</a>
-        <div id="logo">
+      <div data-role="header" data-theme="a" data-position="fixed" id ="app_header" class= "ui-grid-b">
+        <div class="ui-block-a"><a href = "" data-icon="arrow-l" data-rel="back" data-role="button" class = "menu-buttom" style = "float:left;">Atras</a></div>
+        <div id = "logo" class="ui-block-b">
           <a href="#main-page", data-role= "none"/>
             <div id = "image">
               <img src = "css/images/logo.png", class = "app-logo">
             </div>
           </a>
         </div>
-        <a href="#main-page", data-icon= "home" id = "menu-rigth">Inicio</a>
+        <div class="ui-block-c"> <a href="#main-page", data-icon= "home" class = "menu-buttom" data-role="button">Inicio</a></div>
       </div>
       <!-- Start of page header -->
 
-      <!--Start of page body-->
-      <div class="page-body">
-      </div>
-      <!--End of page body-->
-
+     
     </div>
     <!-- End of Place Show page -->
 

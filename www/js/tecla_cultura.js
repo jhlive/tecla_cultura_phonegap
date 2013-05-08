@@ -1,7 +1,9 @@
 var map;
 var markers;
-var DOMAIN = "http://192.168.1.4:3000"
+var DOMAIN = "http://192.168.1.2:3000"
 var map_initialized = false;
+var global_data = ""
+var gallery_loaded = true
 function center_map(map){
 	var bounds = new google.maps.LatLngBounds();
 }
@@ -29,6 +31,8 @@ function initialize_map(data){
 
 
 function bind_handlers(){
+	$.support.cors = true
+	$.mobile.allowCrossDomainPages = true
 	$(".attend-btn").live("click",function(){
 		console.log("Attending event....")
 		var event_id = $(this).data("event");
@@ -54,11 +58,16 @@ function bind_handlers(){
 	$(".backend-link").live("click",function(e){
 		var page = $(this).attr("href")
 		var data_request_url = $(this).data("backend")
-		$(page+" .page-body").html("")
+		$(page +" .page_content").remove();		
+		$($(page +" #app_header").siblings()).remove();
 		$.get(data_request_url,function(data){
 			try{
-				$(page + " .page-body").html(data)
-				$(page).page()
+				global_data = data
+				$(page + " #app_header").after(data)
+				$(page).trigger('pagecreate');
+				if(!gallery_loaded && page == "#gallery-show"){
+					$("#gallery a").photoSwipe({});	
+				}
 			}
 			catch(err){
 				console.log(err)
@@ -67,15 +76,21 @@ function bind_handlers(){
 	})
 
 	$(".menu-link").live("click",function(e){
-		console.log("menu link click")
 		var page = $(this).attr("href")
 		var data_request_url = DOMAIN + $(this).data("backend")
-		$(page+" .page-body").html("")
-		$(page + " .page-body").load(data_request_url)
-		$(page).page()
+		$(page +" .page_content").remove();
+		$.get(data_request_url,function(data){
+			try{
+				$(page + " #app_header").after(data)
+				$(page).trigger('pagecreate');
+			}
+			catch(err){
+				console.log(err)
+			}
+		})
 	})
 
-
+	$("#event-index").bind("pageinit")
 
 	$("#prev-month").live("click",function(){
 		month= $(this).data("month")
@@ -119,13 +134,24 @@ function bind_handlers(){
 		})
 		return false
 	});
-	$('.gallery-page').live('pageshow', function(e){
-		$("#gallery a").photoSwipe({});				
+	$("#gallery a img").live("click", function(e){
+		e.preventDefault();
+	})
+	$('#gallery-show').live('pageshow', function(e){
+		try{
+			$("#gallery a").photoSwipe({});				
+			gallery_loaded = true
+		}
+		catch(err){
+			gallery_loaded = false
+			console.log(err)
+		}
 		return true;
 	});
 
 	$("#map-page").live("pageshow", function(){
 		$.getJSON("/mobile_app/map.json", function(data){
+			console.log("executing callback...")
 			if(!map_initialized){
 				initialize_map(data)
 				map_initialized = true

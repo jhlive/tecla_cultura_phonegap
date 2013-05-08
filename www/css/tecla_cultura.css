@@ -1,4 +1,4 @@
-body.ui-overlay-a{ 
+.ui-page{ 
 	background: url(images/tecla_cultura_bg4.jpg) no-repeat center center fixed;
     -moz-background-size: cover;
 	-webkit-background-size: cover;
@@ -7,15 +7,17 @@ body.ui-overlay-a{
     color:#BBBBBB;
 }
 
+#app_header{
+    max-height: 80px;
+}
+
 #calendar-content{
     padding:0px;
 }
 #logo{
-    display:inline-block;
-    width:35%;
-    max-width:150px;
-    margin:5px 0px 5px 30%;
+    max-height: 80px;
 }
+
 #logo a{
     color:white;
     text-decoration:none;
@@ -40,6 +42,8 @@ body.ui-overlay-a{
 }
 #logo .app-logo{
     width:100%;
+    max-height: 80px;
+    max-width: 120px;
 }
 #logo #title{
     text-align:center;
@@ -147,6 +151,14 @@ body.ui-overlay-a{
 .gallery li { float: left; width: 33.33333333%; }
 .gallery li a { display: block; margin: 5px; border: 1px solid #3c3c3c; }
 .gallery li img { display: block; width: 100%; height: auto; }
+
+.menu-icon-cell h3{
+    margin-top:5px;
+    margin-bottom:0px;
+}
+.menu-icon-cell #map-icon{
+    max-width: 25%;
+}
 #Gallery.ui-content{ overflow: hidden; }
 
 .header-img-left{
@@ -168,16 +180,15 @@ body.ui-overlay-a{
     margin:40px 0% 0px 0px;
     top: 0;
 }
-#menu-rigth{
+.menu-buttom{
     position:relative;
     display:inline-block;
-    float:right;
-    top:0px;
+    float:right;    
+    bottom: 25px;
     left:0px;
     margin:40px 5% 0px 0px;
 }
 .ui-btn-up-d, .ui-btn-hover-d{opacity:0.9;}
-#main-page {background: transparent;}
 
 .ui-listview .ui-btn-up-b {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
@@ -196,6 +207,14 @@ body.ui-overlay-a{
     color:white;
     text-decoration:none;
 }
+.gallery-cell .cover img{
+    height:auto; 
+    width:100%;
+    -webkit-box-shadow: 7px 7px 0px rgba(50, 50, 50, 1);
+    -moz-box-shadow:    7px 7px 0px rgba(50, 50, 50, 1);
+    box-shadow:         7px 7px 0px rgba(50, 50, 50, 1);
+}
+
 .map{
     width:90%;
     margin:10px 5%;
@@ -239,6 +258,7 @@ a.menu-link, a.menu-link:active, a.menu-link:hover, a.menu-link:visited , .menu-
     text-align:center;
     color: white;
     text-decoration:none;
+    font-size:10px;
 }
 .info-page-content{
     background-color: #DEDEDE;
@@ -262,7 +282,7 @@ a.menu-link, a.menu-link:active, a.menu-link:hover, a.menu-link:visited , .menu-
     .calendar-header-short{
         display:table-row;
     }
-    #menu-left, #menu-rigth{
+    #menu-left, .menu-buttom{
         margin-top:25px;
     }
     #logo{
