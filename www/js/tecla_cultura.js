@@ -95,7 +95,7 @@ function bind_handlers(){
 	$("#prev-month").live("click",function(e){
 		e.preventDefault();
 		month= $(this).data("month")
-		route = $(this).attr("href") + "&month=" + month 
+		route = $(this).data("backend") + "&month=" + month  
 		$.get(route,function(data){
 			try{
 				//$(".week-rows").hide();
@@ -114,10 +114,11 @@ function bind_handlers(){
 		return false
 	});
 
-	$("#next-month").live("click",function(){
+	$("#next-month").live("click",function(e){
 		e.preventDefault();
 		month= $(this).data("month")
-		route = $(this).attr("href") + "&month=" + month  
+		route = $(this).data("backend") + "&month=" + month  
+		console.log(route)
 		$.get(route,function(data){
 			try{
 				//$(".week-rows").hide();
