@@ -1,6 +1,6 @@
 var map;
 var markers;
-var DOMAIN = "http://192.168.1.2:3000"
+var DOMAIN = "http://192.168.1.2:3000" //NOTA: CAMBIAR ESTA URL A LA URL DEFINITVA PARA EL BACKEND DE LA APLICACION
 var map_initialized = false;
 var global_data = ""
 var gallery_loaded = true
@@ -92,7 +92,8 @@ function bind_handlers(){
 
 	$("#event-index").bind("pageinit")
 
-	$("#prev-month").live("click",function(){
+	$("#prev-month").live("click",function(e){
+		e.preventDefault();
 		month= $(this).data("month")
 		route = $(this).attr("href") + "&month=" + month 
 		$.get(route,function(data){
@@ -114,6 +115,7 @@ function bind_handlers(){
 	});
 
 	$("#next-month").live("click",function(){
+		e.preventDefault();
 		month= $(this).data("month")
 		route = $(this).attr("href") + "&month=" + month  
 		$.get(route,function(data){
